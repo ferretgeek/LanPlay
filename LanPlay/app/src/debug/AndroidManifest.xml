@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  测试钩子只存在于 debug 构建：这个 sourceSet 在 release 下根本不参与编译，
+  APK 里不会有 TestHookReceiver 的任何痕迹。
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <receiver
+            android:name=".debug.TestHookReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="com.lanplay.player.TEST" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

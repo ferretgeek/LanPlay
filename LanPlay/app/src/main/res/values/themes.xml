@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.LanPlay.Base" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">@color/ic_launcher_background</item>
+    </style>
+    <style name="Theme.LanPlay" parent="Theme.LanPlay.Base" />
+</resources>

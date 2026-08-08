@@ -1,0 +1,13 @@
+# 网站未收录或识别错误时，可在这里手动覆盖；留空不影响正常运行。
+# 字段都可省略。actors 用英文逗号分隔。
+#
+# key 优先使用相对 video_dir 的 POSIX 路径；旧版番号 key 仍兼容。
+# [movies."系列一/DEMO-001.mkv"]
+# code = "DEMO-001"
+# title_zh = "自定义标题"
+# release_date = "2024-01-01"
+# runtime_min = 120
+# studio = "片商"
+# actors = "演员甲,演员乙"
+# poster_url = "https://example.com/poster.jpg"
+# cover_url = "https://example.com/cover.jpg"

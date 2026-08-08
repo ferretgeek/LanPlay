@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="continue_watching"
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_continue"
+        android:shortcutShortLabel="@string/shortcut_continue"
+        android:shortcutLongLabel="@string/shortcut_continue_long">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.lanplay.player"
+            android:targetClass="com.lanplay.player.MainActivity">
+            <extra
+                android:name="screen"
+                android:value="continue" />
+        </intent>
+    </shortcut>
+</shortcuts>

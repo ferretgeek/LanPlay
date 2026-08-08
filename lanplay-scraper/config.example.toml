@@ -1,0 +1,42 @@
+[paths]
+video_dir = '<VIDEO_DIR>'
+output_dir = '<OUTPUT_DIR>'
+
+[filters]
+include_top_level_patterns = []
+exclude_directory_names = ['电影', 'movie', 'movies']
+
+[network]
+proxy = ''
+timeout = 20
+delay_min = 1.0
+delay_max = 3.0
+retry = 3
+
+[sources]
+r18 = true
+javdb = true
+javbus = true
+gfriends = true
+
+[scrape]
+incremental = true
+local_fallback = true
+download_poster = true
+download_cover = true
+download_actor_avatar = true
+
+[output]
+poster_max_size = 900
+cover_max_size = 1600
+avatar_size = 400
+jpeg_quality = 88
+
+[performance]
+workers = 3
+checkpoint_every = 5
+cache_days = 7
+
+[gfriends]
+index_url = 'https://raw.githubusercontent.com/gfriends/gfriends/master/Filetree.json'
+base_url = 'https://cdn.jsdelivr.net/gh/gfriends/gfriends@master/'

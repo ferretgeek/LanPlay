@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LanPlay</string>
+    <string name="tool_app_name">计算工具</string>
+    <string name="shortcut_continue">继续观看</string>
+    <string name="shortcut_continue_long">继续最近一部未看完的视频</string>
+</resources>
