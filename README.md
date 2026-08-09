@@ -56,6 +56,8 @@ cd ..\lanplay-scraper
 
 刮削器的安装、配置和网络安全边界见 [`lanplay-scraper/README.md`](./lanplay-scraper/README.md)。真实目录只应写入已忽略的 `config.toml`。
 
+安装、升级、备份、恢复、健康检查、卸载和常见故障见 [`docs/OPERATIONS.md`](./docs/OPERATIONS.md)；安全报告方式见 [`SECURITY.md`](./SECURITY.md)，参与开发前请阅读 [`CONTRIBUTING.md`](./CONTRIBUTING.md)。
+
 ### 目录
 
 ```text
@@ -70,6 +72,7 @@ docs/images/         脱敏后的真实预览与分享封面
 ### 当前边界
 
 - 首次公开版本提供完整源码，不发布通用签名 APK；请自行构建，避免把开发签名误当成可信分发身份。
+- LanPlay 的服务器端就是用户已有的 SMB 2/3 文件服务；Android 应用不需要、也不会额外暴露管理服务。可选刮削器是按需运行的离线辅助工具，不是常驻控制台。
 - SMB 服务器、网络质量、设备厂商后台策略和解码能力会影响实际体验。
 - 可选刮削器访问公开第三方页面；使用者应遵守所在地法律与相应站点条款。
 
@@ -98,7 +101,9 @@ cd LanPlay
 
 The debug APK is written to `LanPlay/app/build/outputs/apk/debug/`. Release signing is accepted only from environment variables or a configuration outside the workspace; no signing material is committed.
 
-The first public version ships source code rather than a generally trusted signed APK. Server behavior, network quality, vendor background policies, and device decoders can affect playback. See the Chinese section and project documents for the full verification boundary.
+LanPlay uses an existing SMB 2/3 file service as its server side; the Android app neither needs nor exposes a separate management server. The optional scraper is an on-demand helper, not a resident control plane.
+
+The first public version ships source code rather than a generally trusted signed APK. Server behavior, network quality, vendor background policies, and device decoders can affect playback. See [`docs/OPERATIONS.md`](./docs/OPERATIONS.md) for installation, upgrades, backup, restore, health checks, uninstall, and troubleshooting; see [`SECURITY.md`](./SECURITY.md) and [`CONTRIBUTING.md`](./CONTRIBUTING.md) for reporting and contribution guidance.
 
 ## License
 
