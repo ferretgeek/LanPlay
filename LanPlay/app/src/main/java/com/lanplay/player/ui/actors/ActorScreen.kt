@@ -19,7 +19,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.People
 import androidx.compose.material.icons.rounded.Star
@@ -69,7 +69,7 @@ fun ActorScreen(
                 navigationIcon = {
                     IconButton(
                         onClick = { if (selected != null) viewModel.closeActor() else onExit() }
-                    ) { Icon(Icons.Rounded.ArrowBack, "返回") }
+                    ) { Icon(Icons.AutoMirrored.Rounded.ArrowBack, "返回") }
                 },
                 actions = {
                     if (selected != null) {

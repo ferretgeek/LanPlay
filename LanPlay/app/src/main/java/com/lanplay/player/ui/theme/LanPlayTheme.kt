@@ -105,7 +105,15 @@ fun LanPlayTheme(
     val dynamic = settings.themeId == LanPlayThemes.Dynamic.id &&
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
     val scheme = if (dynamic && dark) {
-        dynamicDarkColorScheme(context)
+        dynamicDarkColorScheme(context).copy(
+            background = Color(0xFF17191D),
+            surface = Color(0xFF1D2025),
+            surfaceContainerLowest = Color(0xFF14161A),
+            surfaceContainerLow = Color(0xFF1A1C21),
+            surfaceContainer = Color(0xFF202329),
+            surfaceContainerHigh = Color(0xFF282B32),
+            surfaceContainerHighest = Color(0xFF30343C),
+        )
     } else if (dynamic) {
         dynamicLightColorScheme(context)
     } else if (dark) {
@@ -115,13 +123,13 @@ fun LanPlayTheme(
             primaryContainer = selected.darkAccent.copy(alpha = 0.24f),
             onPrimaryContainer = Color(0xFFE8E8EA),
             secondary = selected.darkAccent.copy(alpha = 0.78f),
-            background = Color.Black,
-            surface = Color(0xFF0C0C0E),
-            surfaceContainerLowest = Color(0xFF050506),
-            surfaceContainerLow = Color(0xFF101012),
-            surfaceContainer = Color(0xFF141416),
-            surfaceContainerHigh = Color(0xFF1C1C1F),
-            surfaceContainerHighest = Color(0xFF242428),
+            background = Color(0xFF17191D),
+            surface = Color(0xFF1D2025),
+            surfaceContainerLowest = Color(0xFF14161A),
+            surfaceContainerLow = Color(0xFF1A1C21),
+            surfaceContainer = Color(0xFF202329),
+            surfaceContainerHigh = Color(0xFF282B32),
+            surfaceContainerHighest = Color(0xFF30343C),
             onBackground = Color(0xFFE8E8EA),
             onSurface = Color(0xFFE8E8EA),
             onSurfaceVariant = Color(0xFFA0A0A8),

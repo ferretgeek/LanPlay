@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
+import android.graphics.drawable.Icon
 import android.os.IBinder
 import android.media.MediaMetadata
 import android.media.session.MediaSession
@@ -171,6 +172,8 @@ class PlaybackService : Service() {
             Intent(this, PlaybackService::class.java).setAction(action),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
+        fun notificationAction(icon: Int, label: String, intent: PendingIntent) =
+            Notification.Action.Builder(Icon.createWithResource(this, icon), label, intent).build()
         return Notification.Builder(this, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_media_play)
             .setContentTitle(title)
@@ -180,21 +183,37 @@ class PlaybackService : Service() {
             .setOnlyAlertOnce(true)
             .setCategory(Notification.CATEGORY_TRANSPORT)
             .setVisibility(Notification.VISIBILITY_PRIVATE)
-            .addAction(android.R.drawable.ic_media_previous, "上一个", action(ACTION_PREVIOUS, 2))
             .addAction(
-                if (playback.state.value == PlaybackState.PLAYING)
-                    android.R.drawable.ic_media_pause else android.R.drawable.ic_media_play,
-                if (playback.state.value == PlaybackState.PLAYING) "暂停" else "继续",
-                action(
-                    if (playback.state.value == PlaybackState.PLAYING) ACTION_PAUSE else ACTION_PLAY,
-                    3,
-                ),
+                notificationAction(
+                    android.R.drawable.ic_media_previous,
+                    "上一个",
+                    action(ACTION_PREVIOUS, 2),
+                )
             )
-            .addAction(android.R.drawable.ic_media_next, "下一个", action(ACTION_NEXT, 4))
             .addAction(
-                android.R.drawable.ic_menu_close_clear_cancel,
-                "退出",
-                action(ACTION_STOP, 5),
+                notificationAction(
+                    if (playback.state.value == PlaybackState.PLAYING)
+                        android.R.drawable.ic_media_pause else android.R.drawable.ic_media_play,
+                    if (playback.state.value == PlaybackState.PLAYING) "暂停" else "继续",
+                    action(
+                        if (playback.state.value == PlaybackState.PLAYING) ACTION_PAUSE else ACTION_PLAY,
+                        3,
+                    ),
+                )
+            )
+            .addAction(
+                notificationAction(
+                    android.R.drawable.ic_media_next,
+                    "下一个",
+                    action(ACTION_NEXT, 4),
+                )
+            )
+            .addAction(
+                notificationAction(
+                    android.R.drawable.ic_menu_close_clear_cancel,
+                    "退出",
+                    action(ACTION_STOP, 5),
+                )
             )
             .setStyle(
                 Notification.MediaStyle()

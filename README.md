@@ -21,6 +21,7 @@ LanPlay 是一个面向 Android 8.0 及以上设备的本地优先播放器。�
 - **双播放内核：** Media3 为主，libVLC 作为兼容回退；支持硬件解码、倍速、画面适配和帧率匹配。
 - **字幕与音轨：** 自动匹配外挂字幕，可切换字符集、内嵌音轨和外挂音轨。
 - **本地媒体状态：** 续播、观看历史、书签、标签、备注、回收站与备份恢复。
+- **全局视觉主题：** 多套浅色配色与 `#17191d` 深灰模式贯穿浏览、详情与播放界面。
 - **隐私优先：** 没有账号系统、云同步或遥测；凭据只在设备本地加密保存，日志会主动脱敏。
 - **可选 PC 刮削器：** 预先生成海报和结构化元数据，Android 应用只通过 SMB 读取结果。
 
@@ -82,6 +83,7 @@ LanPlay is a local-first media player for Android 8.0 and later. It combines SMB
 - **Two playback engines:** Media3 by default with libVLC as a compatibility fallback, plus hardware decoding, speed control, scaling, and frame-rate matching.
 - **Subtitles and audio:** Automatic external-subtitle matching, charset selection, embedded tracks, and external audio tracks.
 - **Local media state:** Resume, history, bookmarks, tags, notes, trash, backup, and restore.
+- **Global visual themes:** Multiple light palettes and a `#17191d` deep-gray mode span browsing, details, and playback.
 - **Privacy first:** No account system, cloud sync, or telemetry. Credentials stay encrypted on-device and logs are redacted.
 - **Optional PC scraper:** Generate posters and structured metadata ahead of time; the Android app reads the result over SMB.
 

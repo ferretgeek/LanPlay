@@ -37,7 +37,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Brightness6
 import androidx.compose.material.icons.rounded.FastForward
 import androidx.compose.material.icons.rounded.ScreenLockRotation
@@ -49,22 +49,22 @@ import androidx.compose.material.icons.rounded.SkipNext
 import androidx.compose.material.icons.rounded.SkipPrevious
 import androidx.compose.material.icons.rounded.Subtitles
 import androidx.compose.material.icons.rounded.Check
-import androidx.compose.material.icons.rounded.VolumeUp
-import androidx.compose.material.icons.rounded.VolumeOff
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
+import androidx.compose.material.icons.automirrored.rounded.VolumeOff
 import androidx.compose.material.icons.rounded.AspectRatio
 import androidx.compose.material.icons.rounded.Audiotrack
 import androidx.compose.material.icons.rounded.BugReport
 import androidx.compose.material.icons.rounded.DeleteOutline
 import androidx.compose.material.icons.rounded.Flip
-import androidx.compose.material.icons.rounded.RotateRight
+import androidx.compose.material.icons.automirrored.rounded.RotateRight
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material.icons.rounded.BookmarkAdd
 import androidx.compose.material.icons.rounded.LocalOffer
 import androidx.compose.material.icons.rounded.Lock
-import androidx.compose.material.icons.rounded.Notes
+import androidx.compose.material.icons.automirrored.rounded.Notes
 import androidx.compose.material.icons.rounded.PhotoCamera
-import androidx.compose.material.icons.rounded.PlaylistPlay
+import androidx.compose.material.icons.automirrored.rounded.PlaylistPlay
 import androidx.compose.material3.Button
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.AssistChip
@@ -1564,7 +1564,7 @@ private fun PlayerControls(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Rounded.ArrowBack, "退出播放器", tint = Color.White)
+                Icon(Icons.AutoMirrored.Rounded.ArrowBack, "退出播放器", tint = Color.White)
             }
             Column(Modifier.weight(1f)) {
                 Text(
@@ -1810,7 +1810,7 @@ private fun PlayerControls(
                         Icon(Icons.Rounded.Audiotrack, "切换音轨", tint = Color.White)
                     }
                     IconButton(onClick = onRotate) {
-                        Icon(Icons.Rounded.RotateRight, "旋转 90 度", tint = Color.White)
+                        Icon(Icons.AutoMirrored.Rounded.RotateRight, "旋转 90 度", tint = Color.White)
                     }
                     IconButton(onClick = onMirror) {
                         Icon(
@@ -1821,7 +1821,7 @@ private fun PlayerControls(
                     }
                     IconButton(onClick = onMute) {
                         Icon(
-                            if (muted) Icons.Rounded.VolumeOff else Icons.Rounded.VolumeUp,
+                            if (muted) Icons.AutoMirrored.Rounded.VolumeOff else Icons.AutoMirrored.Rounded.VolumeUp,
                             if (muted) "恢复声音" else "静音",
                             tint = if (muted) Color(0xFF8FB3F0) else Color.White,
                         )
@@ -1846,7 +1846,7 @@ private fun PlayerControls(
                         Icon(Icons.Rounded.PhotoCamera, "保存当前画面", tint = Color.White)
                     }
                     IconButton(onClick = onQueue) {
-                        Icon(Icons.Rounded.PlaylistPlay, "播放队列与循环", tint = Color.White)
+                        Icon(Icons.AutoMirrored.Rounded.PlaylistPlay, "播放队列与循环", tint = Color.White)
                     }
                 }
             }
@@ -1986,7 +1986,7 @@ private fun OrganizeDialog(
                     Modifier.padding(top = 8.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Icon(Icons.Rounded.Notes, null)
+                    Icon(Icons.AutoMirrored.Rounded.Notes, null)
                     Text("备注", Modifier.padding(start = 8.dp))
                 }
                 OutlinedTextField(
@@ -2368,7 +2368,7 @@ private fun GestureBubble(
                 Icon(
                     when (overlay.icon) {
                         DragMode.BRIGHTNESS -> Icons.Rounded.Brightness6
-                        DragMode.VOLUME -> Icons.Rounded.VolumeUp
+                        DragMode.VOLUME -> Icons.AutoMirrored.Rounded.VolumeUp
                         DragMode.SUBTITLE -> Icons.Rounded.Subtitles
                         else -> Icons.Rounded.PlayArrow
                     },

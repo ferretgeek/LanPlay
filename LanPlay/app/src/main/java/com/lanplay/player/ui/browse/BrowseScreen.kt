@@ -30,7 +30,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.ArrowDownward
 import androidx.compose.material.icons.rounded.ArrowUpward
 import androidx.compose.material.icons.rounded.CheckCircle
@@ -42,7 +42,7 @@ import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.GridView
-import androidx.compose.material.icons.rounded.ViewList
+import androidx.compose.material.icons.automirrored.rounded.ViewList
 import androidx.compose.material.icons.rounded.Dns
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Close
@@ -446,7 +446,7 @@ private fun ConnectionScreen(state: BrowseViewModel.UiState, viewModel: BrowseVi
                                         )
                                     },
                                 ) {
-                                    Icon(Icons.Rounded.ArrowBack, contentDescription = "返回上层文件夹")
+                                    Icon(Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "返回上层文件夹")
                                 }
                             }
                         }
@@ -507,7 +507,7 @@ private fun ConnectionScreen(state: BrowseViewModel.UiState, viewModel: BrowseVi
                                             overflow = TextOverflow.Ellipsis,
                                         )
                                         Icon(
-                                            Icons.Rounded.ArrowBack,
+                                            Icons.AutoMirrored.Rounded.ArrowBack,
                                             contentDescription = null,
                                             modifier = Modifier.graphicsLayer(rotationZ = 180f),
                                         )
@@ -651,7 +651,7 @@ private fun BrowserContent(
                 navigationIcon = {
                     if (state.path.isNotEmpty() || state.mergedMode) {
                         IconButton(onClick = { viewModel.up() }) {
-                            Icon(Icons.Rounded.ArrowBack, contentDescription = "返回上级")
+                            Icon(Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "返回上级")
                         }
                     }
                 },
@@ -919,7 +919,7 @@ private fun LibraryToolsBar(
                 },
                 leadingIcon = {
                     Icon(
-                        if (state.viewMode == ViewMode.GALLERY) Icons.Rounded.ViewList
+                        if (state.viewMode == ViewMode.GALLERY) Icons.AutoMirrored.Rounded.ViewList
                         else Icons.Rounded.GridView,
                         null,
                         Modifier.size(18.dp),

@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PlayerViewModel @Inject constructor(
-    @param:ApplicationContext context: Context,
+    @ApplicationContext context: Context,
     private val settingsRepository: SettingsRepository,
 ) : ViewModel() {
     private val audio = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
