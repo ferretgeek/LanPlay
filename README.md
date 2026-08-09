@@ -2,7 +2,7 @@
   <img src="./docs/images/social-preview.png" alt="LanPlay — SMB-native Android media player" width="100%" />
 </p>
 
-# LanPlay
+# LanPlay — 局域网 SMB 媒体播放器 / LAN SMB Media Player
 
 [![CI](https://github.com/ferretgeek/LanPlay/actions/workflows/ci.yml/badge.svg)](https://github.com/ferretgeek/LanPlay/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0f766e.svg)](./LICENSE)
