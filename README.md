@@ -1,50 +1,62 @@
 <p align="center">
-  <img src="./docs/images/social-preview.png" alt="LanPlay — SMB-native Android media player" width="100%" />
+  <img src="./docs/images/social-preview.png" alt="局域网影片播放器 — 直接播放 SMB 共享里的视频" width="100%" />
 </p>
 
-# LanPlay — 局域网 SMB 媒体播放器 / LAN SMB Media Player
+# 局域网影片播放器
 
-[![CI](https://github.com/ferretgeek/LanPlay/actions/workflows/ci.yml/badge.svg)](https://github.com/ferretgeek/LanPlay/actions/workflows/ci.yml)
+中文 · [English](./README_EN.md)
+
+[![CI](https://github.com/ferretgeek/android-smb-player/actions/workflows/ci.yml/badge.svg)](https://github.com/ferretgeek/android-smb-player/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0f766e.svg)](./LICENSE)
-[![Android 8+](https://img.shields.io/badge/Android-8%2B-3DDC84?logo=android&logoColor=white)](#快速开始)
+[![Android 8+](https://img.shields.io/badge/Android-8%2B-3DDC84?logo=android&logoColor=white)](#自己构建)
 
-> 局域网里的私人影院。直接浏览和播放 SMB 共享中的视频，不需要把媒体库上传到云端。  
-> A private cinema for your local network. Browse and play videos from SMB shares without uploading your library to the cloud.
+> 手机直接打开电脑或 NAS 共享文件夹里的影片，点开就播。
 
-## 中文
+## 为什么会需要它
 
-LanPlay 是一个面向 Android 8.0 及以上设备的本地优先播放器。它把 SMB 2/3 文件浏览、播放、字幕、观看记录、媒体整理与隐私保护放在同一个原生 Android 应用中；Android 端播放时不依赖公网服务。
+电影都在台式机或 NAS 上。想在手机、平板上躺着看，一般有两条路：先传一份过去（占空间又麻烦），或者装一整套媒体服务器（要维护、要转码、要一直开着）。
 
-### 核心能力
+其实第三条路更简单：Windows 共享文件夹、群晖、任何开了 SMB 的设备，都可以直接连进去播。这个 App 做的就是这件事。
 
-- **原生 SMB 工作流：** 局域网扫描、共享发现、访客或账号连接、目录浏览、搜索与排序。
-- **双播放内核：** Media3 为主，libVLC 作为兼容回退；支持硬件解码、倍速、画面适配和帧率匹配。
-- **字幕与音轨：** 自动匹配外挂字幕，可切换字符集、内嵌音轨和外挂音轨。
-- **本地媒体状态：** 续播、观看历史、书签、标签、备注、回收站与备份恢复。
-- **全局视觉主题：** 多套浅色配色与 `#17191d` 深灰模式贯穿浏览、详情与播放界面。
-- **隐私优先：** 没有账号系统、云同步或遥测；凭据只在设备本地加密保存，日志会主动脱敏。
-- **可选 PC 刮削器：** 预先生成海报和结构化元数据，Android 应用只通过 SMB 读取结果。
+- 字幕自动配对，乱码时能换字符集。
+- 看到哪儿自动记住，下次接着看。
+- 历史、书签、标签、备注都在手机本地。
+- **没有账号，没有云，没有转码服务器，没有遥测。**
 
-### 真实界面预览
+它的"服务端"就是你已经有的那个共享文件夹——不需要你再装什么后台。
 
-下图来自项目内置的匿名性能画廊：不连接 SMB、不读取私人媒体，也不包含真实账号或文件名。
+## 界面
+
+下图来自项目内置的匿名画廊：不连接任何 SMB，不读取私人媒体，也不含真实账号或文件名。
 
 <p align="center">
-  <img src="./docs/images/gallery-preview.png" alt="LanPlay anonymous gallery preview" width="360" />
+  <img src="./docs/images/gallery-preview.png" alt="匿名画廊预览" width="360" />
 </p>
 
-### 快速开始
+## 它能做什么
 
-准备 JDK 21、Android SDK 37 与 Android Studio，然后：
+- **找得到、进得去** — 局域网扫描、共享发现、访客或账号登录、目录浏览、搜索与排序。
+- **播得动** — Media3 为主内核，遇到冷门编码自动回退 libVLC；硬件解码、倍速、画面适配、帧率匹配。
+- **字幕和音轨** — 自动匹配同名外挂字幕，可切字符集、内嵌音轨和外挂音轨。
+- **记得住** — 续播、观看历史、书签、标签、备注、回收站，以及完整备份与恢复。
+- **看得舒服** — 多套浅色配色与 `#17191d` 深灰暗色，贯穿浏览、详情和播放三个界面。
+- **不留痕迹** — 没有账号系统、云同步或遥测；凭据只在设备上加密保存，日志主动脱敏。
+- **想要海报的话** — 附一个可选的 PC 端刮削器，提前生成海报和结构化元数据写回共享目录，手机端只读结果。
+
+## 自己构建
+
+首个公开版本**只发布源码，不发通用签名 APK**——避免让开发签名被当成可信的分发身份。
+
+准备 JDK 21、Android SDK 37 和 Android Studio：
 
 ```powershell
 cd LanPlay
 .\gradlew.bat :app:assembleDebug --no-daemon --max-workers=2
 ```
 
-生成的 debug APK 位于 `LanPlay/app/build/outputs/apk/debug/`。Release 构建必须通过工作区外的环境变量或签名配置提供密钥；仓库不包含任何签名文件。
+debug APK 在 `LanPlay/app/build/outputs/apk/debug/`。Release 签名只从工作区之外的环境变量或签名配置读取，仓库里不含任何签名文件。
 
-运行测试：
+跑测试：
 
 ```powershell
 cd LanPlay
@@ -54,57 +66,39 @@ cd ..\lanplay-scraper
 .\.venv\Scripts\python.exe -m unittest -v
 ```
 
-刮削器的安装、配置和网络安全边界见 [`lanplay-scraper/README.md`](./lanplay-scraper/README.md)。真实目录只应写入已忽略的 `config.toml`。
+## 技术上值得一提的地方
 
-安装、升级、备份、恢复、健康检查、卸载和常见故障见 [`docs/OPERATIONS.md`](./docs/OPERATIONS.md)；安全报告方式见 [`SECURITY.md`](./SECURITY.md)，参与开发前请阅读 [`CONTRIBUTING.md`](./CONTRIBUTING.md)。
+**SMB 2/3 是原生实现的。** 不经过 WebDAV 桥、不依赖第三方网关、不需要在电脑上装任何伴生服务。你在 Windows 上右键共享的那个文件夹，就是它的数据源。
 
-### 目录
+**播放走双内核，而且会自己切。** Media3 覆盖绝大多数情况，遇到它啃不下来的编码自动回退 libVLC，用户不需要知道这件事发生了。硬解、倍速、画面适配和帧率匹配在两个内核下都可用。
+
+**刮削器是一次性工具，不是常驻服务。** 它在 PC 上按需运行，把海报和元数据写回共享目录，然后就可以关掉。手机端只通过 SMB 读结果——所以整套东西没有任何需要 24 小时开着的管理进程。真实目录只写进已被忽略的 `config.toml`。
+
+**凭据和日志都当敏感数据处理。** SMB 账号密码在设备上加密保存，日志输出前主动脱敏，不会把共享路径和用户名原样打出来。
+
+刮削器的安装、配置和网络安全边界见 [`lanplay-scraper/README.md`](./lanplay-scraper/README.md)。
+
+## 目录
 
 ```text
 LanPlay/             Android 应用与 Gradle 工程
-lanplay-scraper/     可选 Windows/Python 元数据刮削器
+lanplay-scraper/     可选的 Windows / Python 元数据刮削器
 docs/images/         脱敏后的真实预览与分享封面
 播放器规格.md         已实现的产品与技术规格
 设计系统.md           视觉、布局与交互规范
 需求文档.md           完整需求与验收边界
 ```
 
-### 当前边界
+## 现实边界
 
-- 首次公开版本提供完整源码，不发布通用签名 APK；请自行构建，避免把开发签名误当成可信分发身份。
-- LanPlay 的服务器端就是用户已有的 SMB 2/3 文件服务；Android 应用不需要、也不会额外暴露管理服务。可选刮削器是按需运行的离线辅助工具，不是常驻控制台。
-- SMB 服务器、网络质量、设备厂商后台策略和解码能力会影响实际体验。
-- 可选刮削器访问公开第三方页面；使用者应遵守所在地法律与相应站点条款。
+- 播放体验受 SMB 服务器本身、网络质量、厂商后台策略和设备解码能力影响——这些不在 App 能控制的范围里。
+- 可选刮削器会访问公开的第三方页面；使用时请遵守所在地法律和相应站点条款。
+- 首个公开版本不提供签名 APK，需要自己构建。
 
-## English
+## 更多文档
 
-LanPlay is a local-first media player for Android 8.0 and later. It combines SMB 2/3 browsing, playback, subtitles, watch state, library tools, and privacy protection in one native Android app. Playback itself does not require a public internet service.
+[安装、升级、备份、恢复、排错](./docs/OPERATIONS.md) · [版本变更](./CHANGELOG.md) · [参与开发](./CONTRIBUTING.md) · [安全策略](./SECURITY.md)
 
-### Highlights
+## 许可
 
-- **Native SMB workflow:** LAN scanning, share discovery, guest or account connections, browsing, search, and sorting.
-- **Two playback engines:** Media3 by default with libVLC as a compatibility fallback, plus hardware decoding, speed control, scaling, and frame-rate matching.
-- **Subtitles and audio:** Automatic external-subtitle matching, charset selection, embedded tracks, and external audio tracks.
-- **Local media state:** Resume, history, bookmarks, tags, notes, trash, backup, and restore.
-- **Global visual themes:** Multiple light palettes and a `#17191d` deep-gray mode span browsing, details, and playback.
-- **Privacy first:** No account system, cloud sync, or telemetry. Credentials stay encrypted on-device and logs are redacted.
-- **Optional PC scraper:** Generate posters and structured metadata ahead of time; the Android app reads the result over SMB.
-
-### Build
-
-Install JDK 21, Android SDK 37, and Android Studio, then run:
-
-```powershell
-cd LanPlay
-.\gradlew.bat :app:assembleDebug --no-daemon --max-workers=2
-```
-
-The debug APK is written to `LanPlay/app/build/outputs/apk/debug/`. Release signing is accepted only from environment variables or a configuration outside the workspace; no signing material is committed.
-
-LanPlay uses an existing SMB 2/3 file service as its server side; the Android app neither needs nor exposes a separate management server. The optional scraper is an on-demand helper, not a resident control plane.
-
-The first public version ships source code rather than a generally trusted signed APK. Server behavior, network quality, vendor background policies, and device decoders can affect playback. See [`docs/OPERATIONS.md`](./docs/OPERATIONS.md) for installation, upgrades, backup, restore, health checks, uninstall, and troubleshooting; see [`SECURITY.md`](./SECURITY.md) and [`CONTRIBUTING.md`](./CONTRIBUTING.md) for reporting and contribution guidance.
-
-## License
-
-LanPlay source code is released under the [MIT License](./LICENSE). Third-party libraries, including libVLC, keep their own licenses and are not relicensed by this repository.
+源码以 [MIT License](./LICENSE) 发布。包括 libVLC 在内的第三方库保留各自许可证，本仓库不对其重新授权。
